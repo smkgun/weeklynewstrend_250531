@@ -670,7 +670,8 @@
           label: '총 댓글 수(meta)',
           data: [55885, 51491, 71539, 77006, 72042, 66808, 79035],
           backgroundColor: '#f5a623',
-          yAxisID: 'y'
+          yAxisID: 'y',
+          barThickness: 18  // ✅ 막대 두께 조정 (또는 categoryPercentage 사용 가능)
         },
         {
           type: 'line',
@@ -678,11 +679,11 @@
           data: [966, 952, 984, 986, 977, 976, 947],
           borderColor: '#7ed321',
           backgroundColor: '#7ed321',
-          yAxisID: 'y',
+          yAxisID: 'y2',  // ✅ y2축 기준으로 이동
           tension: 0.3,
           borderWidth: 2,
           pointRadius: 3,
-          pointStyle: 'rectRot'
+          pointStyle: 'triangle'
         },
         {
           type: 'line',
@@ -728,13 +729,14 @@
           grid: { drawOnChartArea: false },
           title: {
             display: true,
-            text: '정치 기사 수 (건)'
+            text: '정치 기사 수 및 기사당 최대 댓글 수 (건)'
           }
         }
       }
     }
   });
 </script>
+
 
 
 
