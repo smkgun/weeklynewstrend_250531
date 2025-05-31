@@ -729,71 +729,112 @@
 </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script>
-const ctx2 = document.getElementById('keywordTrendChart').getContext('2d');
-const keywordTrendChart = new Chart(ctx2, {
-  type: 'line',
-  data: {
-    labels: ['2025-05-24', '2025-05-25', '2025-05-26', '2025-05-27', '2025-05-28', '2025-05-29', '2025-05-30'],
-    datasets: [
-      {
-        label: '이재명',
+  const naverctx = document.getElementById('naverTrendChart').getContext('2d');
+  const chart = new Chart(naverctx, {
+    type: 'line',
+    data: {
+      labels: ['2025-05-24', '2025-05-25', '2025-05-26', '2025-05-27', '2025-05-28', '2025-05-29', '2025-05-30'],
+      datasets: [
+        {
+          label: '이재명',
         data: [19.88296, 16.19948, 17.29067, 23.30006, 31.34027, 79.78443, 42.2753],
-        borderColor: '#1f77b4',
-        backgroundColor: '#1f77b4',
-        fill: false,
-        tension: 0.4
-      },
-      {
-        label: '김문수',
+        borderColor: '#4aa8d8',
+          backgroundColor: 'rgba(74, 168, 216, 0.1)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: '김문수',
         data: [23.31085, 19.68462, 19.29522, 29.72907, 25.37326, 64.88025, 37.87271],
-        borderColor: '#d62728',
-        backgroundColor: '#d62728',
-        fill: false,
-        tension: 0.4
-      },
-      {
-        label: '이준석',
+        borderColor: '#a73232',
+          backgroundColor: 'rgba(167, 50, 50, 0.1)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: '이준석',
         data: [26.47432, 21.52029, 24.66523, 51.35036, 97.05688, 100.0, 60.72642],
-        borderColor: '#ff7f0e',
-        backgroundColor: '#ff7f0e',
-        fill: false,
-        tension: 0.4
+       borderColor: 'orange',
+          backgroundColor: 'rgba(255, 165, 0, 0.1)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointHoverRadius: 6
       }
     ]
   },
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: '네이버 일간 키워드 검색량 (2025.5.24 ~ 5.30)',
-        font: {
-          size: 16
-        }
-      },
-      legend: {
-        position: 'top'
-      }
-    },
-    scales: {
-      x: {
+ options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
         title: {
           display: true,
-          text: '날짜'
+          text: '네이버 검색어 트렌드 (2025-05-24 ~ 2025-05-30)',
+          font: { size: 14, weight: '600' },
+          padding: { top: 10, bottom: 20 }
+        },
+        legend: {
+          position: 'top',
+          labels: {
+            font: { size: 11 },
+            padding: 15,
+            usePointStyle: true,
+            boxWidth: 6
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          titleColor: '#333',
+          bodyColor: '#333',
+          bodyFont: { size: 11 },
+          titleFont: { size: 12, weight: 'bold' },
+          padding: 10,
+          borderColor: '#ddd',
+          borderWidth: 1,
+          displayColors: true,
+          boxWidth: 10,
+          boxHeight: 10,
+          usePointStyle: true,
+          callbacks: {
+            label: function(context) {
+              return context.dataset.label + ': ' + context.raw.toFixed(2);
+            }
+          }
         }
       },
-      y: {
-        beginAtZero: true,
-        title: {
-          display: true,
-          text: '검색량 지수'
+      scales: {
+        x: {
+          grid: { color: 'rgba(0, 0, 0, 0.05)' },
+          ticks: { font: { size: 10 }, padding: 5 }
+        },
+        y: {
+          grid: { color: 'rgba(0, 0, 0, 0.05)' },
+          ticks: { font: { size: 10 }, padding: 5 }
         }
+      },
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
+      animation: {
+        duration: 1000,
+        easing: 'easeOutQuart'
+      },
+      elements: {
+        line: { borderWidth: 2 },
+        point: { hoverRadius: 7, radius: 5, hitRadius: 30 }
       }
     }
-  }
-});
+  });
 </script>
 
 <!-- Chart.js 라이브러리 -->
