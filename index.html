@@ -673,10 +673,16 @@
           yAxisID: 'y'
         },
         {
+          type: 'line',
           label: '기사당 최대 댓글 수',
           data: [966, 952, 984, 986, 977, 976, 947],
+          borderColor: '#7ed321',
           backgroundColor: '#7ed321',
-          yAxisID: 'y'
+          yAxisID: 'y',
+          tension: 0.3,
+          borderWidth: 2,
+          pointRadius: 3,
+          pointStyle: 'rectRot'
         },
         {
           type: 'line',
@@ -729,6 +735,7 @@
     }
   });
 </script>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
