@@ -669,9 +669,10 @@
         {
           label: '총 댓글 수(meta)',
           data: [55885, 51491, 71539, 77006, 72042, 66808, 79035],
-          backgroundColor: '#f5a623',
+          backgroundColor: 'rgba(245, 166, 35, 0.3)',  // ✅ 투명도 적용된 노란색
           yAxisID: 'y',
           barThickness: 18  // ✅ 막대 두께 조정 (또는 categoryPercentage 사용 가능)
+          order: 1  // ✅ 가장 아래 레이어
         },
         {
           type: 'line',
@@ -684,6 +685,7 @@
           borderWidth: 2,
           pointRadius: 3,
           pointStyle: 'triangle'
+          order: 3  // ✅ 최상단
         },
         {
           type: 'line',
@@ -695,6 +697,7 @@
           tension: 0.3,
           borderWidth: 2,
           pointRadius: 3
+          order: 2  // ✅ 중간 레이어
         }
       ]
     },
